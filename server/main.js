@@ -72,7 +72,7 @@ const addToHTMLTemplate = (data, sideBar, title, page = "all") => {
 <html lang="en">
 <head>
   <title>${title}</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     .${page}-bar{
       background: var(--theme-${page});
@@ -92,7 +92,7 @@ ${data}
 
 const createSideBar = (types) => {
   const data = types.map((type) => {
-    return `<a class="${type.toLowerCase()}-bar" href="/${type.toLowerCase()}.html">
+    return `<a class="${type.toLowerCase()}-bar" href="${type.toLowerCase()}.html">
         <div class="bar">${capitalize(type)}</div>
       </a>
     `;
