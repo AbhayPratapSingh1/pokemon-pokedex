@@ -13,7 +13,7 @@
   --theme-fire : rgb(211, 46, 0);
   --theme-water : rgb(30, 0, 255);
   --theme-bug : rgb(93, 73, 58);
-  --theme-normal : rgb(0, 0, 0);
+  --theme-normal : rgb(60, 114, 65);
   --theme-electric : #908e17;
   --theme-ground : rgb(75, 34, 11);
   --theme-fairy : pink;
@@ -23,7 +23,8 @@
   --theme-ice : skyblue;
   --theme-dragon : linear-gradient(90deg,rgb(146, 9, 9), rgb(155, 99, 2));
   --theme-psychic : rgb(68, 57, 24);
-  --theme-ghost : rgb(28, 30, 31);
+  --theme-ghost : rgb(39, 44, 46);
+  --theme-dark : rgb(0, 0, 0);
 }
 
 .all-bar:hover{
@@ -80,6 +81,9 @@
 .ghost-bar:hover{
   --hover-color:var(--theme-ghost)
 }
+.dark-bar:hover{
+  --hover-color:var(--theme-ghost)
+}
 
 .all{
   --theme:var(--theme-all)
@@ -131,6 +135,9 @@
 }
 .psychic{
   --theme:var(--theme-psychic)
+}
+.dark{
+  --theme:var(--theme-dark)
 }
 
 
@@ -341,6 +348,10 @@
 
 .bg-psychic {
   background-color: var(--theme-psychic);
+}
+
+.bg-dark {
+  background-color: var(--theme-dark);
 }
 .pokemon-type{
   padding: 1px 3px;

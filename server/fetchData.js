@@ -32,19 +32,21 @@ const parseData = (data) => {
   return parsedData;
 };
 
-const fetchAllFirstGenPokemon = async (st = 1, end = 151) => {
+const fetchAllFirstGenPokemon = async (st = 1, end = 1025) => {
   const data = [];
   for (let id = st; id <= end; id++) {
     const pokemon = await fetchSinglePokemon(id);
 
     data.push(parseData(pokemon.data));
+    if (id % 100 === 0) {
+      console.log("id", id);
+    }
   }
   return data;
 };
 
 const main = async () => {
   const allPokemon = await fetchAllFirstGenPokemon();
-
   Deno.writeTextFileSync("./pokemon/firstGen.json", JSON.stringify(allPokemon));
 };
 main();

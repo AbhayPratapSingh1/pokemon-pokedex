@@ -12,7 +12,9 @@ const main = async () => {
       }
     }
   }
+  console.log(allTypes.length);
 
+  Deno.writeTextFileSync("./pokemon/types.json", JSON.stringify(allTypes));
   return allTypes;
 };
 
