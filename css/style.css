@@ -1,0 +1,349 @@
+* {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+:root{
+  --theme : black;
+  --hover-color: red;
+  --theme-all: red;
+  --theme-poison: purple;
+  --theme-grass: green;
+  --theme-flying: rgb(0, 149, 255);
+  --theme-fire : rgb(211, 46, 0);
+  --theme-water : rgb(30, 0, 255);
+  --theme-bug : rgb(93, 73, 58);
+  --theme-normal : rgb(0, 0, 0);
+  --theme-electric : #908e17;
+  --theme-ground : rgb(75, 34, 11);
+  --theme-fairy : pink;
+  --theme-fighting : rgb(133, 23, 4);
+  --theme-rock : #504d4d;
+  --theme-steel : rgb(143, 143, 143);
+  --theme-ice : skyblue;
+  --theme-dragon : linear-gradient(90deg,rgb(146, 9, 9), rgb(155, 99, 2));
+  --theme-psychic : rgb(68, 57, 24);
+  --theme-ghost : rgb(28, 30, 31);
+}
+
+.all-bar:hover{
+  --hover-color:var(--theme-all)
+}
+.poison-bar:hover{
+  --hover-color:var(--theme-poison)
+}
+.grass-bar:hover{
+  --hover-color:var(--theme-grass)
+}
+.flying-bar:hover{
+  --hover-color:var(--theme-flying)
+}
+.fire-bar:hover{
+  --hover-color:var(--theme-fire)
+}
+.water-bar:hover{
+  --hover-color:var(--theme-water)
+}
+.bug-bar:hover{
+  --hover-color:var(--theme-bug)
+}
+.normal-bar:hover{
+  --hover-color:var(--theme-normal)
+}
+.electric-bar:hover{
+  --hover-color:var(--theme-electric)
+}
+.ground-bar:hover{
+  --hover-color:var(--theme-ground)
+}
+.fairy-bar:hover{
+  --hover-color:var(--theme-fairy)
+}
+.fighting-bar:hover{
+  --hover-color:var(--theme-fighting)
+}
+.rock-bar:hover{
+  --hover-color:var(--theme-rock)
+}
+.steel-bar:hover{
+  --hover-color:var(--theme-steel)
+}
+.ice-bar:hover{
+  --hover-color:var(--theme-ice)
+}
+.dragon-bar:hover{
+  --hover-color:var(--theme-dragon)
+}
+.psychic-bar:hover{
+  --hover-color:var(--theme-psychic)
+}
+.ghost-bar:hover{
+  --hover-color:var(--theme-ghost)
+}
+
+.all{
+  --theme:var(--theme-all)
+}
+.poison{
+  --theme:var(--theme-poison)
+}
+.grass{
+  --theme:var(--theme-grass)
+}
+.flying{
+  --theme:var(--theme-flying)
+}
+.fire{
+  --theme:var(--theme-fire)
+}
+.water{
+  --theme:var(--theme-water)
+}
+.bug{
+  --theme:var(--theme-bug)
+}
+.normal{
+  --theme:var(--theme-normal)
+}
+.electric{
+  --theme:var(--theme-electric)
+}
+.ground{
+  --theme:var(--theme-ground)
+}
+.fairy{
+  --theme:var(--theme-fairy)
+}
+.fighting{
+  --theme:var(--theme-fighting)
+}
+.rock{
+  --theme:var(--theme-rock)
+}
+.steel{
+  --theme:var(--theme-steel)
+}
+.ice{
+  --theme:var(--theme-ice)
+}
+.dragon{
+  --theme:var(--theme-dragon)
+}
+.psychic{
+  --theme:var(--theme-psychic)
+}
+
+
+
+
+.side-bar{
+  background: aliceblue;
+  width: 400px;
+  flex-shrink: 0;
+  display: flex ;
+  flex-direction: column;
+   color: black;
+}
+
+.side-bar a{
+  font-size: 24px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  flex-grow: 1;
+  padding: 2px;
+  text-decoration: none;
+ 
+}
+
+.side-bar a .bar{  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.side-bar a:hover{
+  background: var(--hover-color); 
+  color: white;
+}
+
+
+.color-box{
+  height: 40px;
+  width: 40px;
+  background: var(--theme);
+}
+
+
+.main-box{
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cards {
+  padding: 40px 0px;
+  display: flex;
+  gap: 40px;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.card {
+  border: 1px solid rgba(196, 196, 196, 0.719);
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.4);
+  width: 370px;
+  border-radius: 5px;
+  max-height: max-content;
+  padding: 5px;
+  flex-grow: 0;
+  ;
+}
+
+.card .image-container {
+  background: linear-gradient(135deg, rgba(118, 166, 118, .5), rgba(163, 129, 163, .5));
+  width: 100%;
+  aspect-ratio: 1.2;
+  overflow: hidden;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.card .poke-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  scale: 0.8;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.card .description .heading {
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+  padding: 10px 0px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .description .heading .name {
+  font-family: serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.card .description .heading .poke-type {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: flex-end;
+  color: white;
+}
+
+
+
+.card .description .details {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+.card .description .details .field {
+  display: flex;
+  padding-bottom: 0.3em;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.326);
+  justify-content: space-between;
+}
+
+.card .description .details .field .prop-detail {
+  display: flex;
+  gap: 5px;
+  color: #4a4a4a;
+}
+
+.card .description .details .field .property {
+  color: #373737;
+}
+
+.bg-poison {
+  background-color: var(--theme-poison);
+}
+
+.bg-grass {
+  background-color: var(--theme-grass);
+}
+
+.bg-flying {
+  background-color: var(--theme-flying);
+}
+
+.bg-fire {
+  background-color: var(--theme-fire);
+}
+
+.bg-water {
+  background-color: var(--theme-water);
+}
+
+.bg-bug {
+  background-color: var(--theme-bug);
+}
+.bg-normal {
+  background-color: var(--theme-normal);
+}
+
+.bg-electric {
+  background-color: var(--theme-electric);
+}
+
+.bg-ground {
+  background-color: var(--theme-ground);
+}
+.bg-fairy {
+  background-color: var(--theme-fairy);
+}
+
+.bg-fighting {
+  background-color: var(--theme-fighting);
+}
+
+
+.bg-rock {
+  background-color: var(--theme-rock);
+}
+.bg-steel {
+  background-color: var(--theme-steel);
+}
+.bg-ice {
+  background-color: var(--theme-ice);
+}
+.bg-ghost {
+  background-color: var(--theme-ghost);
+}
+
+.bg-dragon {
+  background: var(--theme-dragon);
+}
+
+.bg-psychic {
+  background-color: var(--theme-psychic);
+}
+.pokemon-type{
+  padding: 1px 3px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px 0 gray;
+}

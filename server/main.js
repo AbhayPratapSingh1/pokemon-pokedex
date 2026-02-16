@@ -67,30 +67,76 @@ const createCards = (pokemonDetails) => {
   return cardsTag(cards, "cards");
 };
 
-const addToHTMLTemplate = (data, title) => {
+const addToHTMLTemplate = (data, sideBar, title, page = "all") => {
   return `<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>${title}</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .${page}-bar{
+      background: var(--theme-${page});
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="main-box">
+  ${sideBar}
 ${data}
+</div
 </body>
 </html>`;
 };
 
-const main = () => {
-  const rawData = Deno.readTextFileSync("./pokemon/firstGen.json");
-  const data = JSON.parse(rawData);
+const createSideBar = (types) => {
+  const data = types.map((type) => {
+    return `<a class="${type.toLowerCase()}-bar" href="/${type.toLowerCase()}.html">
+        <div class="bar">${capitalize(type)}</div>
+      </a>
+    `;
+  });
 
-  const cards = createCards(data);
-
-  const htmlPage = addToHTMLTemplate(cards, "Pokemon");
-
-  Deno.writeTextFileSync("./index.html", htmlPage);
+  return `<div class="side-bar">
+        ${data.join("")}
+    </div>
+  `;
 };
 
-main();
+const createSinglePage = (
+  filterCriteria = () => true,
+  savingPath = "./index.html",
+  type = "all",
+) => {
+  const rawPokemons = Deno.readTextFileSync("./pokemon/firstGen.json");
+  const rawTypes = Deno.readTextFileSync("./pokemon/types.json");
+  const pokemons = JSON.parse(rawPokemons);
+  const types = JSON.parse(rawTypes);
+  const filteredPokemon = pokemons.filter(filterCriteria);
+  const cards = createCards(filteredPokemon);
+  const sideBar = createSideBar(["all", ...types]);
+  const htmlPage = addToHTMLTemplate(cards, sideBar, "Pokemon", type);
+
+  Deno.writeTextFileSync(`${savingPath}`, htmlPage);
+};
+
+// main(({ types }) => types.includes("bug"), "./bug.html", "bug");
+
+const generatAllPages = () => {
+  const rawTypes = Deno.readTextFileSync("./pokemon/types.json");
+  const types = JSON.parse(rawTypes);
+  // for all pokemon
+  createSinglePage(() => true, `./all.html`, "all");
+  createSinglePage(() => true, `./index.html`, "all");
+
+  types.forEach((type) => {
+    createSinglePage(
+      ({ types }) => types.includes(type),
+      `./${type}.html`,
+      type,
+    );
+  });
+};
+
+generatAllPages();
