@@ -37,6 +37,11 @@ const createStats = (stats) => {
 const createCardTemplate = (name, imageSrc, types, stats) => {
   return `
      <div class="card">
+      <div class="poke-ball">
+        <div class="poke-ball-center"></div>
+        <div class="poke-ball-upper"></div>
+        <div class="poke-ball-below"></div>
+      </div>
       <div class="image-container">
         <img class="poke-image"
           src="${imageSrc}"

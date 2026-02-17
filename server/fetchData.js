@@ -36,17 +36,23 @@ const fetchAllFirstGenPokemon = async (st = 1, end = 1025) => {
   const data = [];
   for (let id = st; id <= end; id++) {
     const pokemon = await fetchSinglePokemon(id);
-
-    data.push(parseData(pokemon.data));
-    if (id % 100 === 0) {
-      console.log("id", id);
+    if (!pokemon.isError) {
+      data.push(parseData(pokemon.data));
+      if (id % 100 === 0) {
+        console.log("id", id);
+      }
     }
   }
   return data;
 };
 
 const main = async () => {
-  const allPokemon = await fetchAllFirstGenPokemon();
-  Deno.writeTextFileSync("./pokemon/firstGen.json", JSON.stringify(allPokemon));
+  const first1025Pokemon = await fetchAllFirstGenPokemon();
+  const specialPokemon = await fetchAllFirstGenPokemon(10001, 10350);
+
+  Deno.writeTextFileSync(
+    "./pokemon/firstGen.json",
+    JSON.stringify([...first1025Pokemon, ...specialPokemon]),
+  );
 };
 main();
